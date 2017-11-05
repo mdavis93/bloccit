@@ -24,6 +24,14 @@ posts = Post.all
   )
 end
 
+Post.find_or_create_by!(title: "Idempotent Title") do |p|
+  p.body = "This should only appear one time."
+end
+
+Comment.find_or_create_by!(post_id: Post.all.find_or_create_by!(title: "Idempotent Title").id) do |p|
+  p.body = "This comment should be idempotent and not repeate."
+end
+
 puts "Seed Finished"
 puts "#{Post.count} posts created."
 puts "#{Comment.count} comments created."
