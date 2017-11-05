@@ -81,3 +81,10 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 11ms (Views: 9.8ms)
 
 
+Started GET "/welcome/contact" for 127.0.0.1 at 2017-11-04 19:32:48 -0500
+Processing by WelcomeController#contact as HTML
+  Rendering welcome/contact.html.erb within layouts/application
+  Rendered welcome/contact.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 257ms (Views: 116.1ms)
+
+
