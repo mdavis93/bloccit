@@ -35,4 +35,24 @@ RSpec.describe User, type: :model do
       expect(user_with_invalid_email).to_not be_valid
     end
   end
+
+  describe "name format" do
+    it "should properly capitalize mixed-case names" do
+      user.name = "TeST usER"
+      user.save
+      expect(user.name).to eq "Test User"
+    end
+
+    it "should properly capitalize lower-case names" do
+      user.name = "test user"
+      user.save
+      expect(user.name).to eq "Test User"
+    end
+
+    it "should not modify properly cased names" do
+      user.name = "Test User"
+      user.save
+      expect(user.name).to eq "Test User"
+    end
+  end
 end
