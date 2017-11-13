@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
-  
+
   before_save { self.email = email.downcase if email.present? }
   before_save { self.name = name.split.map!{|name| name.capitalize}.join(" ") if name.present? }
+  before_save { self.role ||= :member }
 
   EMAIL_REGEX = /\A[\w\-.]+@[a-z\d\-.]+\.[a-z]{2,}\z/i
 
@@ -17,4 +18,6 @@ class User < ApplicationRecord
             format: { with: EMAIL_REGEX }
 
   has_secure_password
+
+  enum role: [:member, :admin]
 end
