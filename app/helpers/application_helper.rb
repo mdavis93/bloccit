@@ -4,4 +4,8 @@ module ApplicationHelper
     css_class << ' has-error' if errors.any?
     content_tag :div, capture(&bloc), class: css_class
   end
+
+  def avatar_url(user)
+    "http://lorempixel.com/48/48/people"
+  end
 end
